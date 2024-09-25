@@ -1,4 +1,4 @@
-const INFO = {
+let INFO = {
 	main: {
 		title: "Portfolio Abdellah",
 		name: "Abdellah Elmir.",
@@ -18,7 +18,7 @@ const INFO = {
 	homepage: {
 		title: "Etudiant Paris Ynov Campus",
 		description:
-			"Je m'appelle Abdellah, j'ai 20 ans et je suis actuellement en deuxième année d'informatique. Passionné par les nouvelles technologies, j'ai déjà acquis une bonne maîtrise des langages comme Python, C, 2Golang, Java, ainsi que des notions en développement web avec HTML/CSS et JavaScript. Durant mes études, j'ai eu l'occasion de travailler sur plusieurs projets, comme la création d'une application de gestion de bibliothèque en Python et d'un site web personnel pour présenter mes compétences. Je m'intéresse particulièrement à la cybersécurité et à l'intelligence artificielle, domaines dans lesquels j'aimerais me spécialiser à l'avenir. Mon objectif est de devenir développeur logiciel et de continuer à apprendre et à évoluer dans ce secteur passionnant.",
+			"Je m'appelle Abdellah, j'ai 20 ans et je suis actuellement en deuxième année d'informatique. Passionné par les nouvelles technologies, j'ai déjà acquis une bonne maîtrise des langages comme Python, C, Golang, Java, ainsi que des notions en développement web avec HTML/CSS et JavaScript. Durant mes études, j'ai eu l'occasion de travailler sur plusieurs projets, comme la création d'une application de gestion de bibliothèque en Python et d'un site web personnel pour présenter mes compétences. Je m'intéresse particulièrement à la cybersécurité et à l'intelligence artificielle, domaines dans lesquels j'aimerais me spécialiser à l'avenir. Mon objectif est de devenir développeur logiciel et de continuer à apprendre et à évoluer dans ce secteur passionnant.",
 
 	},
 
@@ -86,3 +86,13 @@ const INFO = {
 };
 
 export default INFO;
+
+function AddProject(title, description, logo, linkText, link) {
+	INFO.projects.push({
+		title: title,
+		description: description,
+		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/"+logo+"/" + logo + ".png",
+		linkText: linkText,
+		link: link,
+	});
+}
