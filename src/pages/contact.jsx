@@ -40,36 +40,25 @@ const Contact = () => {
 
 					<div className="contact-container">
 						<div className="title contact-title">
-							Let's Get in Touch: Ways to Connect with Me
+							Contactez-moi
+
 						</div>
 
 						<div className="subtitle contact-subtitle">
-							Thank you for your interest in getting in touch with
-							me. I welcome your feedback, questions, and
-							suggestions. If you have a specific question or
-							comment, please feel free to email me directly at
-							&nbsp;{" "}
-							<a href={`mailto:${INFO.main.email}`}>
+						Vous avez une question ou souhaitez discuter d’un projet ? N’hésitez pas 
+						à me contacter via le formulaire ci-dessous ou en utilisant les coordonnées
+						 suivantes. Je suis toujours à l’écoute pour de nouvelles opportunités et 
+						 collaborations.
+						Je suis facilement joignable via plusieurs canaux, alors choisissez celui qui vous convient le mieux.
+						Je m’efforce de répondre rapidement et avec attention.{" "}
+						Je travaille principalement à distance, mais je suis disponible pour des rendez-vous en personne si vous êtes dans la région.
+						Je suis impatient de découvrir vos idées et de collaborer avec vous !
+						Mon mail pro : 
+						&nbsp;{""}
+						<a href={`elias.elmir@ynov.com:${INFO.main.email}`}>
 								{INFO.main.email}
 							</a>
-							. I make an effort to respond to all messages within
-							24 hours, although it may take me longer during busy
-							periods. Alternatively, you can use the contact form
-							on my website to get in touch. Simply fill out the
-							required fields and I'll get back to you as soon as
-							possible. Finally, if you prefer to connect on
-							social media, you can find me on{" "}
-							<a
-								href={INFO.socials.instagram}
-								target="_blank"
-								rel="noreferrer"
-							>
-								{INFO.socials.instagram}
-							</a>
-							. I post regular updates and engage with my
-							followers there, so don't hesitate to reach out.
-							Thanks again for your interest, and I look forward
-							to hearing from you!
+							
 						</div>
 					</div>
 
