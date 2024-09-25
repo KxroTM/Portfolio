@@ -26,6 +26,42 @@ const SEO = [
 			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
 		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
 	},
+
+	{
+		page: "admin",
+		description:
+			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "login",
+		description:
+			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "register",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "logout",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "404",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
 ];
 
 export default SEO;
