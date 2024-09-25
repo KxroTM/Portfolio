@@ -1,10 +1,14 @@
 package main
 
 import (
+	db "portfolio/assets"
+
 	gin "github.com/gin-gonic/gin"
 )
 
 func main() {
+	db.Tablecreate()
+
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
@@ -14,4 +18,5 @@ func main() {
 	})
 
 	r.Run(":8080")
+
 }
