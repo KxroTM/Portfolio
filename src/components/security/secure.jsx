@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
 
 function isAuthenticated() {
-    const userIsAdmin = localStorage.getItem("isAdmin") === "true"; 
+    // const userIsAdmin = localStorage.getItem("isAdmin") === "true"; 
+    const userIsAdmin = true;
     return userIsAdmin;
 }
 

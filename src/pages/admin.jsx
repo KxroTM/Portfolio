@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 import NavBar from "../components/common/navBar";
@@ -12,69 +12,104 @@ import SEO from "../data/seo";
 import "./styles/admin.css";  // =============================================>
 
 const Admin = () => {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+    const [isPopupVisible, setPopupVisible] = useState(false); // État pour contrôler le pop-up
 
-	const currentSEO = SEO.find((item) => item.page === "admin");
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-	return (
-		<React.Fragment>
-			<Helmet>
-				<title>{`Admin | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
+    const currentSEO = SEO.find((item) => item.page === "admin");
 
-			<div className="page-content">
-				<NavBar active="contact" />
-				<div className="content-wrapper">
-					<div className="contact-logo-container">
-						<div className="contact-logo">
-							<Logo width={46} />
-						</div>
-					</div>
+    // Fonction pour afficher le pop-up
+    const handleAddPostClick = () => {
+        setPopupVisible(true);
+    };
 
-					<div className="contact-container">
-						<div className="title contact-title">
-							Contactez-moi
+    // Fonction pour cacher le pop-up
+    const handleClosePopup = () => {
+        setPopupVisible(false);
+    };
 
-						</div>
+    return (
+        <React.Fragment>
+            <Helmet>
+                <title>{`Admin | ${INFO.main.title}`}</title>
+                <meta name="description" content={currentSEO.description} />
+                <meta
+                    name="keywords"
+                    content={currentSEO.keywords.join(", ")}
+                />
+            </Helmet>
 
-						<div className="subtitle contact-subtitle">
-						Vous avez une question ou souhaitez discuter d’un projet ? N’hésitez pas 
-						à me contacter via le formulaire ci-dessous ou en utilisant les coordonnées
-						 suivantes. Je suis toujours à l’écoute pour de nouvelles opportunités et 
-						 collaborations.
-						Je suis facilement joignable via plusieurs canaux, alors choisissez celui qui vous convient le mieux.
-						Je m’efforce de répondre rapidement et avec attention.{" "}
-						Je travaille principalement à distance, mais je suis disponible pour des rendez-vous en personne si vous êtes dans la région.
-						Je suis impatient de découvrir vos idées et de collaborer avec vous !
-						Mon mail pro : 
-						&nbsp;{""}
-						<a href={`elias.elmir@ynov.com:${INFO.main.email}`}>
-								{INFO.main.email}
-							</a>
-							
-						</div>
-					</div>
+            <div className="page-content">
+                <NavBar active="contact" />
+                <div className="content-wrapper">
+                    <div className="contact-logo-container">
+                        <div className="contact-logo">
+                            <Logo width={46} />
+                        </div>
+                    </div>
 
-					<div className="socials-container">
-						<div className="contact-socials">
-							<Socials />
-						</div>
-					</div>
+                    <div className="contact-container">
+                        <div className="title contact-title">
+                            Admin
+                        </div>
 
-					<div className="page-footer">
-						<Footer />
-					</div>
-				</div>
-			</div>
-		</React.Fragment>
-	);
+                        <div className="subtitle contact-subtitle">
+                            Pour ajouter un projet, veuillez cliquer sur le bouton
+                        </div>
+                        <button onClick={handleAddPostClick}>
+                            Ajouter un post
+                        </button>
+                    </div>  
+                    <div className="page-footer">
+                        <Footer />
+                    </div>
+                </div>
+            </div>
+
+            {/* Pop-up */}
+            {isPopupVisible && (
+                <div className="popup-overlay">
+                    <div className="popup">
+                        <h2>Ajouter un Post</h2>
+                        <div className="wave-group">
+                            <input required type="text" className="input" />
+                            <span className="bar"></span>
+                            <label className="label">
+                                <span className="label-char" style={{ "--index": 0 }}>L</span>
+                                <span className="label-char" style={{ "--index": 1 }}>a</span>
+                                <span className="label-char" style={{ "--index": 2 }}>n</span>
+                                <span className="label-char" style={{ "--index": 3 }}>g</span>
+                                <span className="label-char" style={{ "--index": 4 }}>u</span>
+                                <span className="label-char" style={{ "--index": 5 }}>a</span>
+                                <span className="label-char" style={{ "--index": 6 }}>g</span>
+                                <span className="label-char" style={{ "--index": 7 }}>e</span>
+                                <span className="label-char" style={{ "--index": 8 }}> </span>
+                                <span className="label-char" style={{ "--index": 9 }}>d</span>
+                                <span className="label-char" style={{ "--index": 10 }}>e</span>
+                                <span className="label-char" style={{ "--index": 11 }}> </span>
+                                <span className="label-char" style={{ "--index": 12 }}>p</span>
+                                <span className="label-char" style={{ "--index": 13 }}>r</span>
+                                <span className="label-char" style={{ "--index": 14 }}>o</span>
+                                <span className="label-char" style={{ "--index": 15 }}>g</span>
+                                <span className="label-char" style={{ "--index": 16 }}>r</span>
+                                <span className="label-char" style={{ "--index": 17 }}>a</span>
+                                <span className="label-char" style={{ "--index": 18 }}>m</span>
+                                <span className="label-char" style={{ "--index": 19 }}>m</span>
+                                <span className="label-char" style={{ "--index": 20 }}>a</span>
+                                <span className="label-char" style={{ "--index": 21 }}>t</span>
+                                <span className="label-char" style={{ "--index": 22 }}>i</span>
+                                <span className="label-char" style={{ "--index": 23 }}>o</span>
+                                <span className="label-char" style={{ "--index": 24 }}>n</span>
+                            </label>
+                        </div>
+                        <button onClick={handleClosePopup}>Valider</button>
+                    </div>
+                </div>
+            )}
+        </React.Fragment>
+    );
 };
 
 export default Admin;

@@ -36,3 +36,125 @@
 	justify-content: flex-start;
 	align-items: center;
 }
+
+button {
+    background-color: white;
+    color: black;
+    border-radius: 10em;
+    font-size: 13px;
+	width: 160px;
+    font-weight: 600;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+    position: relative; 
+    left: 85%;
+	bottom: 35px;
+}
+  
+  button:hover {
+	transform: translateY(-4px) translateX(-2px);
+	box-shadow: 2px 5px 0 0 black;
+  };
+  
+  button:active {
+	transform: translateY(2px) translateX(1px);
+	box-shadow: 0 0 0 0 black;
+  };
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.685); /* Fond semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Assurez-vous que le pop-up soit au-dessus du contenu */
+}	
+
+.popup {
+    background: rgba(219, 219, 219, 0.747);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+}
+
+/* From Uiverse.io by AbanoubMagdy1 */ 
+.wave-group {
+	position: relative;
+  }
+  
+  .wave-group .input {
+	font-size: 16px;
+	padding: 10px 10px 10px 5px;
+	display: block;
+	width: 200px;
+	border: none;
+	border-bottom: 1px solid #515151;
+	background: transparent;
+  }
+  
+  .wave-group .input:focus {
+	outline: none;
+  }
+  
+  .wave-group .label {
+	color: #999;
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	display: flex;
+  }
+  
+  .wave-group .label-char {
+	transition: 0.2s ease all;
+	transition-delay: calc(var(--index) * .05s);
+  }
+  
+  .wave-group .input:focus ~ label .label-char,
+  .wave-group .input:valid ~ label .label-char {
+	transform: translateY(-20px);
+	font-size: 14px;
+	color: #5264AE;
+  }
+  
+  .wave-group .bar {
+	position: relative;
+	display: block;
+	width: 200px;
+  }
+  
+  .wave-group .bar:before,.wave-group .bar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #5264AE;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+  }
+  
+  .wave-group .bar:before {
+	left: 50%;
+  }
+  
+  .wave-group .bar:after {
+	right: 50%;
+  }
+  
+  .wave-group .input:focus ~ .bar:before,
+  .wave-group .input:focus ~ .bar:after {
+	width: 50%;
+  }
+  
+  
