@@ -38,35 +38,20 @@ const Login = () => {
 						</div>
 					</div>
 
-					<div className="contact-container">
-						<div className="title contact-title">
-							Contactez-moi
-
-						</div>
-
-						<div className="subtitle contact-subtitle">
-						Vous avez une question ou souhaitez discuter d’un projet ? N’hésitez pas 
-						à me contacter via le formulaire ci-dessous ou en utilisant les coordonnées
-						 suivantes. Je suis toujours à l’écoute pour de nouvelles opportunités et 
-						 collaborations.
-						Je suis facilement joignable via plusieurs canaux, alors choisissez celui qui vous convient le mieux.
-						Je m’efforce de répondre rapidement et avec attention.{" "}
-						Je travaille principalement à distance, mais je suis disponible pour des rendez-vous en personne si vous êtes dans la région.
-						Je suis impatient de découvrir vos idées et de collaborer avec vous !
-						Mon mail pro : 
-						&nbsp;{""}
-						<a href={`elias.elmir@ynov.com:${INFO.main.email}`}>
-								{INFO.main.email}
-							</a>
-							
-						</div>
-					</div>
-
-					<div className="socials-container">
-						<div className="contact-socials">
-							<Socials />
-						</div>
-					</div>
+    <form class="form">
+       <p class="form-title">Sign in to your account</p>
+        <div class="input-container">
+          <input type="email" placeholder="Enter email"/>
+          <span>
+          </span>
+      </div>
+      <div class="input-container">
+          <input type="password" placeholder="Enter password"/>
+        </div>
+         <button type="submit" class="submit">
+        Sign in
+      </button>
+   </form>
 
 					<div className="page-footer">
 						<Footer />
