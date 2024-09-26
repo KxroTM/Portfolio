@@ -49,7 +49,7 @@ const Login = () => {
           <input type="password" placeholder="Enter password"/>
         </div>
 		<div class="button-login">
-         <button type="submit" class="submit">
+         <button type="submit" class="submit" >
         Sign in
       </button>
 	  </div>
@@ -65,3 +65,7 @@ const Login = () => {
 };
 
 export default Login;
+
+function getLogin(username, password) {
+	console.log(fetch('http://localhost:8080/login?username='+username+'&password='+password))
+}
