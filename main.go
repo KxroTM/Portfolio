@@ -26,7 +26,7 @@ func main() {
 		username := c.Query("username")
 		password := c.Query("password")
 
-		if db.UserExists(username, password) {
+		if db.Login(username, password) {
 			c.JSON(http.StatusOK, gin.H{"message": "User exists"})
 			return
 		}
