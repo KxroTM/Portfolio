@@ -106,20 +106,3 @@ func IsPasswordValid(password string) bool {
 
 	return lowerCheck && upperCheck && digitCheck && specialCharCheck
 }
-func UserExists(username string, password string) bool {
-	// co a la base de données
-	db, err := sql.Open("sqlite3", "./db/Db.sql")
-	checkErr(err, "Error opening database:")
-	defer db.Close()
-
-	// Vérifie si l'utilisateur existe
-	var passwordDB string
-	err = db.QueryRow("SELECT password FROM users WHERE username = ?", username).Scan(&passwordDB)
-	if err != nil {
-		return false
-	}
-	if passwordDB == password {
-		return true
-	}
-	return false
-}
