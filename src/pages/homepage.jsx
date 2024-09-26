@@ -164,16 +164,16 @@ const Homepage = () => {
 							</a>
 						</div>
 
-						<div className="homepage-projects">
-							<AllProjects />
-						</div>
-
 						<div className="homepage-after-title">
 
 							<div className="homepage-works">
 								<Works />
 							</div>
+							<div className="homepage-competences">
+								<competences />
+							</div>
 						</div>
+
 
 						<div className="page-footer">
 							<Footer />

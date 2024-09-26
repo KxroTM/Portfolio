@@ -65,6 +65,40 @@
 	font-weight: 700;
 }
 
+
+/* Styles pour centrer les icônes dans les boutons */
+.project-actions button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px; /* Ajuste la largeur selon tes besoins */
+	height: 40px; /* Ajuste la hauteur selon tes besoins */
+	border: none;
+	background-color: #f0f0f0; /* Ajuste la couleur selon ton design */
+	cursor: pointer;
+	padding: 5px;
+  }
+  
+  .project-actions button svg {
+	font-size: 20px; /* Taille de l'icône */
+	color: #333; /* Couleur de l'icône */
+  }
+
+  .project-login button {
+	position : relative;
+	left: -1%;
+
+	display: flex;	
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 40px;
+	border: none;
+	background-color: #f0f0f0;
+	cursor: pointer;
+
+  }
+
 @media (max-width: 600px) {
 	.project {
 		height: 300px;
