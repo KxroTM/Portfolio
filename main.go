@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	db.Tablecreate()
+	db.UserTableCreate()
 	db.Register("dgzrgzrgf", "Ffa@!§42e5")
 
 	// r := gin.Default()

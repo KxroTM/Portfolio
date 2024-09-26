@@ -13,7 +13,7 @@ func checkErr(err error, msg string) {
 		return
 	}
 }
-func Tablecreate() {
+func UserTableCreate() {
 	// co a la base de données
 	db, err := sql.Open("sqlite3", "./db/Db.sql")
 	checkErr(err, "Error opening database:")
@@ -24,4 +24,8 @@ func Tablecreate() {
 		username TEXT PRIMARY KEY,
 		password TEXT)`)
 	checkErr(err, "Error creating table users:")
+}
+
+func ProjectTableCreate() {
+
 }
