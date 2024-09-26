@@ -1,22 +1,23 @@
 package main
 
 import (
+	"net/http"
 	db "portfolio/assets"
-	// gin "github.com/gin-gonic/gin"
+
+	gin "github.com/gin-gonic/gin"
 )
 
 func main() {
 	db.UserTableCreate()
-	db.Register("dgzrgzrgf", "Ffa@!§42e5")
+	db.ProjectTableCreate()
 
-	// r := gin.Default()
+	r := gin.Default()
 
-	// r.GET("/", func(c *gin.Context) {
-	// 	c.JSON(200, gin.H{
-	// 		"message": "Hello, Gin with Docker!",
-	// 	})
-	// })
+	r.GET("/projects", func(c *gin.Context) {
+		projects := db.GetAllProjects()
 
-	// r.Run(":8080")
+		c.JSON(http.StatusOK, projects)
+	})
 
+	r.Run(":8080")
 }
