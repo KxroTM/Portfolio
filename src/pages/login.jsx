@@ -30,7 +30,7 @@ const Login = () => {
 			</Helmet>
 
 			<div className="page-content">
-				<NavBar active="contact" />
+				<NavBar active="login" />
 				<div className="content-wrapper">
 					<div className="contact-logo-container">
 						<div className="contact-logo">
