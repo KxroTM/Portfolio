@@ -22,6 +22,7 @@ func checkErr(err error, msg string) {
 		return
 	}
 }
+
 func UserTableCreate() {
 	// co a la base de données
 	db, err := sql.Open("sqlite3", "./db/Db.sql")
@@ -53,25 +54,49 @@ func ProjectTableCreate() {
 }
 
 func GetAllProjects() []Project {
-	// co a la base de données
 	db, err := sql.Open("sqlite3", "./db/Db.sql")
 	checkErr(err, "Error opening database:")
 	defer db.Close()
 
-	// Récupère tous les projets
 	rows, err := db.Query("SELECT * FROM projects")
 	checkErr(err, "Error selecting projects:")
 	defer rows.Close()
 
-	// Crée un slice de projets
 	projects := []Project{}
 	for rows.Next() {
-		// Crée un projet
 		project := Project{}
 		err = rows.Scan(&project.ID, &project.Title, &project.Description, &project.Logo, &project.LinkText, &project.LinkUrl)
 		checkErr(err, "Error scanning project:")
-		// Ajoute le projet au slice
 		projects = append(projects, project)
 	}
 	return projects
+}
+
+func GetProjectsByLanguage(language string) []Project {
+	db, err := sql.Open("sqlite3", "./db/Db.sql")
+	checkErr(err, "Error opening database:")
+	defer db.Close()
+
+	rows, err := db.Query("SELECT * FROM projects WHERE logo LIKE ?", "%"+language+".png")
+	checkErr(err, "Error selecting projects:")
+	defer rows.Close()
+
+	projects := []Project{}
+	for rows.Next() {
+		project := Project{}
+		err = rows.Scan(&project.ID, &project.Title, &project.Description, &project.Logo, &project.LinkText, &project.LinkUrl)
+		checkErr(err, "Error scanning project:")
+		projects = append(projects, project)
+	}
+	return projects
+}
+
+func AddProject(project Project) {
+	db, err := sql.Open("sqlite3", "./db/Db.sql")
+	checkErr(err, "Error opening database:")
+	defer db.Close()
+
+	_, err = db.Exec("INSERT INTO projects (id, title, description, logo, linkText, linkUrl) VALUES (?, ?, ?, ?, ?, ?)",
+		project.ID, project.Title, project.Description, project.Logo, "Voir le Projet", project.LinkUrl)
+	checkErr(err, "Error inserting project:")
 }
