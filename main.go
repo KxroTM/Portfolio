@@ -8,14 +8,6 @@ import (
 )
 
 func main() {
-	db.AddProject(db.Project{
-		ID:          "1",
-		Title:       "Portfolio",
-		Description: "Mon portfolio",
-		Logo:        "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-		LinkText:    "Voir le projet",
-		LinkUrl:     "https://www.google.com",
-	})
 
 	r := gin.Default()
 
