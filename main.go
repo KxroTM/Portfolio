@@ -22,6 +22,15 @@ func main() {
 
 		c.JSON(http.StatusOK, projects)
 	})
+	r.GET("/login", func(c *gin.Context) {
+		username := c.Query("username")
+		password := c.Query("password")
+
+		if db.UserExists(username, password) {
+			c.JSON(http.StatusOK, gin.H{"message": "User exists"})
+			return
+		}
+	})
 
 	r.Run(":8080")
 }
