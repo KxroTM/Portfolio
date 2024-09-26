@@ -1,2 +1,2 @@
 docker build -t portfolio .
-docker run -p 8080:8080 portfolio
+docker run -p 8080:8080 -p 3000:3000 portfolio
