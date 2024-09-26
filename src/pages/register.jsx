@@ -9,19 +9,19 @@ import Socials from "../components/about/socials";
 import INFO from "../data/user";
 import SEO from "../data/seo";
 
-import "./styles/contact.css";
+import "./styles/login.css";  // =============================================>
 
-const Contact = () => {
+const Register = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const currentSEO = SEO.find((item) => item.page === "contact");
+	const currentSEO = SEO.find((item) => item.page === "register");
 
 	return (
 		<React.Fragment>
 			<Helmet>
-				<title>{`Contact | ${INFO.main.title}`}</title>
+				<title>{`Register | ${INFO.main.title}`}</title>
 				<meta name="description" content={currentSEO.description} />
 				<meta
 					name="keywords"
@@ -77,4 +77,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default Register;

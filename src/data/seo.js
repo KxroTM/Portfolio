@@ -14,13 +14,6 @@ const SEO = [
 	},
 
 	{
-		page: "articles",
-		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
-	},
-
-	{
 		page: "projects",
 		description:
 			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to.",
@@ -33,6 +26,42 @@ const SEO = [
 			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
 		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
 	},
+
+	{
+		page: "admin",
+		description:
+			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "login",
+		description:
+			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "register",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "logout",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
+	{
+		page: "404",
+		description:
+			"fgre",
+		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+	},
+
 ];
 
 export default SEO;
