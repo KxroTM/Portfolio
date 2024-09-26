@@ -27,8 +27,9 @@ func main() {
 		password := c.Query("password")
 
 		if db.Login(username, password) {
-			c.JSON(http.StatusOK, gin.H{"message": "User exists"})
-			return
+			c.JSON(http.StatusOK, gin.H{"status": "200"})
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{"status": "403"})
 		}
 	})
 
