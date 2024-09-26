@@ -1,71 +1,44 @@
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
-
-import NavBar from "../components/common/navBar";
-import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
-import Socials from "../components/about/socials";
-
-import INFO from "../data/user";
-import SEO from "../data/seo";
-
-import "./styles/login.css";  // =============================================>
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext"; 
 
 const Login = () => {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+    const { login } = useContext(AuthContext);
 
-	const currentSEO = SEO.find((item) => item.page === "login");
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-	return (
-		<React.Fragment>
-			<Helmet>
-				<title>{`Login | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-			<div className="page-content">
-				<NavBar active="login" />
-				<div className="content-wrapper">
-					<div className="contact-logo-container">
-						<div className="contact-logo">
-							<Logo width={46} />
-						</div>
-					</div>
+        try {
+            const response = await fetch(`http://localhost:8080/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-    <form class="form">
-       <p class="form-title">Sign in to your account</p>
-        <div class="input-container">
-          <input type="email" placeholder="Enter email"/>
-          <span>
-          </span>
-      </div>
-      <div class="input-container">
-          <input type="password" placeholder="Enter password"/>
+            if (response.ok) {
+                login();
+                window.location.href = "/admin";
+            } else {
+                console.error("Login failed");
+            }
+        } catch (error) {
+            console.error("An error occurred during login:", error);
+        }
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleLogin}>
+                <input type="email" id="email" placeholder="Email" />
+                <input type="password" id="password" placeholder="Password" />
+                <button type="submit">Login</button>
+            </form>
         </div>
-		<div class="button-login">
-         <button type="submit" class="submit" >
-        Sign in
-      </button>
-	  </div>
-   </form>
-
-					<div className="page-footer">
-						<Footer />
-					</div>
-				</div>
-			</div>
-		</React.Fragment>
-	);
+    );
 };
 
 export default Login;
-
-function getLogin(username, password) {
-	console.log(fetch('http://localhost:8080/login?username='+username+'&password='+password))
-}

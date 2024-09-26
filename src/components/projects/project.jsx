@@ -1,23 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 import "./styles/project.css";
 
+import { IsConnected } from "../../pages/login";
+
 const Project = (props) => {
 	const { logo, title, description, linkText, link } = props;
-	const [isLoggedIn, setIsLoggedIn] = useState(false); // État de connexion
 
 	// Fonction pour supprimer le projet
 	const handleDelete = () => {
-		// Logique pour supprimer le projet (par exemple, appel à une API)
 		alert(`Le projet "${title}" a été supprimé.`);
 	};
 
 	// Fonction pour modifier le projet
 	const handleEdit = () => {
-		// Logique pour modifier le projet (par exemple, redirection vers un formulaire de modification)
 		alert(`Modification du projet "${title}".`);
 	};
 
@@ -36,7 +34,7 @@ const Project = (props) => {
 						</div>
 						<div className="project-link-text">{linkText}</div>
 					</div>
-					{isLoggedIn && ( // Afficher les boutons uniquement si connecté
+					{IsConnected && ( 
 						<div className="project-actions">
 							<button onClick={handleEdit}>
 								<FontAwesomeIcon icon={faEdit} />
@@ -49,13 +47,6 @@ const Project = (props) => {
 					)}
 				</div>
 			</div>
-
-			{/* Bouton pour simuler la connexion/déconnexion */}
-			<div className="project-login">
-			<button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-				{isLoggedIn ? "Se déconnecter" : "Se connecter"}
-			</button>
-		</div>
 		</React.Fragment>
 	);
 };

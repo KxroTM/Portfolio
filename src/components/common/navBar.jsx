@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 import "./styles/navBar.css";
 
+import { IsConnected } from "../../pages/login";
+
 const NavBar = (props) => {
+	console.log(IsConnected);
 	const { active } = props;
 
 	return (
@@ -59,8 +62,11 @@ const NavBar = (props) => {
 										: "nav-item"
 								}	
 							>
-								<Link to="/login">Connexion</Link>
-							
+							{!IsConnected ? (
+									<Link to="/login">Connexion</Link>
+								) : (
+									<Link to="/logout">Déconnexion</Link>
+								)}
 							</li>
 							
 
