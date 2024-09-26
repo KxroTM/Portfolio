@@ -92,6 +92,13 @@
 	border-radius: 0.5rem;
 	text-transform: uppercase;
   }
+
+  .button-login {
+	position: relative;
+	right: 290px;
+	top: 50px;
+  }
+
   
   .signup-link {
 	color: #6B7280;

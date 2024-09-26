@@ -48,9 +48,11 @@ const Login = () => {
       <div class="input-container">
           <input type="password" placeholder="Enter password"/>
         </div>
+		<div class="button-login">
          <button type="submit" class="submit">
         Sign in
       </button>
+	  </div>
    </form>
 
 					<div className="page-footer">
