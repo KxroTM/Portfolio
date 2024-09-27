@@ -1,16 +1,23 @@
-import React, { createContext, useState } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem("isAuthenticated") === "true";
+        setIsAuthenticated(isLoggedIn);
+    }, []);
+
     const login = () => {
-        setIsAuthenticated(true); 
+        setIsAuthenticated(true);
+        localStorage.setItem("isAuthenticated", "true");
     };
 
     const logout = () => {
         setIsAuthenticated(false);
+        localStorage.setItem("isAuthenticated", "false");
     };
 
     return (
@@ -18,4 +25,9 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
+};
+
+// Hook personnalisé pour utiliser le contexte
+export const useAuth = () => {
+    return useContext(AuthContext);
 };

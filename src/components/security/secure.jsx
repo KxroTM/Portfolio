@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext"; // Utilise le hook useAuth
 
 const ProtectedRoute = ({ children }) => {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useAuth(); // Utilise le hook pour obtenir l'état d'authentification
 
     if (!isAuthenticated) {
         return <Navigate to="/login" />;

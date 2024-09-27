@@ -36,14 +36,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
-                    <Route
-                        path="/admin"
-                        element={
-                            <ProtectedRoute>
-                                <Admin />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
                     <Route path="*" element={<Notfound />} />
                 </Routes>
             </div>

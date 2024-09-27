@@ -1,81 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../../context/AuthContext"; // Importer le contexte
 import "./styles/navBar.css";
 
-import { IsConnected } from "../../pages/login";
+const NavBar = ({ active }) => {
+    const { isAuthenticated } = useAuth(); // Utiliser l'état isAuthenticated du contexte
 
-const NavBar = (props) => {
-	console.log(IsConnected);
-	const { active } = props;
-
-	return (
-		<React.Fragment>
-			<div className="nav-container">
-				<nav className="navbar">
-					<div className="nav-background">
-						<ul className="nav-list">
-							<li
-								className={
-									active === "home"
-										? "nav-item active"
-										: "nav-item"
-								}
-							>
-								<Link to="/">Accueil</Link>
-							</li>
-							<li
-								className={
-									active === "about"
-										? "nav-item active"
-										: "nav-item"
-								}
-							>
-								<Link to="/about">À Propos</Link>
-							</li>
-							<li
-								className={
-									active === "projects"
-										? "nav-item active"
-										: "nav-item"
-								}
-							>
-								<Link to="/projects">Projects</Link>
-							</li>
-
-							<li
-								className={
-									active === "contact"
-										? "nav-item active"
-										: "nav-item"
-								}
-							>
-								<Link to="/contact">Contact</Link>
-
-							</li>
-
-
-							<li	
-								className={
-									active === "login"
-										? "nav-item active"
-										: "nav-item"
-								}	
-							>
-							{!IsConnected ? (
-									<Link to="/login">Connexion</Link>
-								) : (
-									<Link to="/logout">Déconnexion</Link>
-								)}
-							</li>
-							
-
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</React.Fragment>
-	);
+    return (
+        <React.Fragment>
+            <div className="nav-container">
+                <nav className="navbar">
+                    <div className="nav-background">
+                        <ul className="nav-list">
+                            <li className={active === "home" ? "nav-item active" : "nav-item"}>
+                                <Link to="/">Accueil</Link>
+                            </li>
+                            <li className={active === "about" ? "nav-item active" : "nav-item"}>
+                                <Link to="/about">À Propos</Link>
+                            </li>
+                            <li className={active === "projects" ? "nav-item active" : "nav-item"}>
+                                <Link to="/projects">Projects</Link>
+                            </li>
+                            <li className={active === "contact" ? "nav-item active" : "nav-item"}>
+                                <Link to="/contact">Contact</Link>
+                            </li>
+                            <li className={active === "login" ? "nav-item active" : "nav-item"}>
+                                {isAuthenticated ? (
+                                    <Link to="/logout">Déconnexion</Link>
+                                ) : (
+                                    <Link to="/login">Connexion</Link>
+                                )}
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </React.Fragment>
+    );
 };
 
 export default NavBar;
