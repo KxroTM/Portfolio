@@ -15,23 +15,9 @@ const Edit = () => {
         window.location.href = "http://localhost:8080/edit";
     }, []);
 
-    return (
-        <React.Fragment>
-            <Helmet>
-                <title>{SEO.edit.title}</title>
-                <meta name="description" content={SEO.edit.description} />
-            </Helmet>
-            <NavBar />
-            <div className="edit-container">
-                <div className="edit-logo">
-                    <Logo />
-                </div>
-                <div className="edit-title">{INFO.edit.title}</div>
-                <div className="edit-description">{INFO.edit.description}</div>
-            </div>
-            <Footer />
-        </React.Fragment>
-    );
-};
+    const currentSEO = SEO.find((item) => item.page === "edit");
 
-export default Edit;
+    return (
+
+
+
