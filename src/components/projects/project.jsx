@@ -6,17 +6,17 @@ import { useAuth } from "../../context/AuthContext"; // Importe le contexte ici
 import "./styles/project.css";
 
 const Project = (props) => {
-    const { logo, title, description, linkText } = props;
+    const { id, logo, title, description, linkText } = props;
     const { isAuthenticated } = useAuth(); // Utilise le contexte d'authentification
 
     // Fonction pour supprimer le projet
-    const handleDelete = () => {
-        alert(`Le projet "${title}" a été supprimé.`);
+    const handleDelete = (id) => {
+		window.location.href = "http://localhost:8080/delete?"+id;
     };
 
     // Fonction pour modifier le projet
     const handleEdit = () => {
-        alert(`Modification du projet "${title}".`);
+		window.location.href = "/edit";
     };
 
     return (
@@ -39,7 +39,7 @@ const Project = (props) => {
                             <button onClick={handleEdit}>
                                 <FontAwesomeIcon icon={faEdit} />
                             </button>
-                            <button onClick={handleDelete}>
+                            <button onClick={handleDelete(id)}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
                         </div>
