@@ -108,7 +108,7 @@ const Admin = () => {
                                         <option value="cpp">C++</option>
                                         <option value="csharp">C#</option>
                                         <option value="css">CSS</option>
-                                        <option value="golang">Go</option>
+                                        <option value="go">Go</option>
                                         <option value="haskell">Haskell</option>
                                         <option value="html">HTML</option>
                                         <option value="java">Java</option>

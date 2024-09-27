@@ -87,12 +87,11 @@ let INFO = {
 
 export default INFO;
 
-function AddProject(id,title, description, logo, linkText, link) {
+function AddProject(title, description, logo, linkText, link) {
 	INFO.projects.push({
-		id:id,
 		title: title,
 		description: description,
-		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/"+logo+"/" + logo + ".png",
+		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/"+logo+"/" + logo + ".png",
 		linkText: linkText,
 		link: link,
 	});
@@ -104,9 +103,10 @@ function GetAllsProjects() {
 		.then((data) => {
 			console.log(data);
 			data.forEach((element) => {
-				AddProject(element.id,element.title, element.description, element.logo, element.linkText, element.link);
+				AddProject(element.title, element.description, element.logo, element.linkText, element.link);
 			});
 		});
+	console.log(INFO.projects);
 }
 
 GetAllsProjects();
