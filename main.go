@@ -48,5 +48,18 @@ func main() {
 		}
 	})
 
+	r.GET("/add", func(c *gin.Context) {
+		proj := db.Project{
+			Title:       c.Query("title"),
+			Description: c.Query("description"),
+			Logo:        c.Query("langage"),
+			LinkUrl:     c.Query("link"),
+		}
+
+		db.AddProject(proj)
+
+		c.JSON(http.StatusOK, gin.H{"message": "Project added!"})
+	})
+
 	r.Run(":8080")
 }

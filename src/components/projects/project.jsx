@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 import "./styles/project.css";
+import { Helmet } from "react-helmet"; // Assurez-vous que cette ligne est présente
 
 const Project = (props) => {
     const { logo, title, description, linkText, link } = props;

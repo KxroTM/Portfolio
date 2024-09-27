@@ -87,8 +87,9 @@ let INFO = {
 
 export default INFO;
 
-function AddProject(title, description, logo, linkText, link) {
+function AddProject(id,title, description, logo, linkText, link) {
 	INFO.projects.push({
+		id:id,
 		title: title,
 		description: description,
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/"+logo+"/" + logo + ".png",
@@ -101,6 +102,7 @@ function GetAllsProjects() {
 	fetch("http://localhost:8080/projects")
 		.then((response) => response.json())
 		.then((data) => {
+			console.log(data);
 			data.forEach((element) => {
 				AddProject(element.id,element.title, element.description, element.logo, element.linkText, element.link);
 			});
