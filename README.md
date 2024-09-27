@@ -7,7 +7,7 @@
 - Présentation des projets avec des descriptions, des images et des liens.
 - Interface web réactive et moderne.
 - Simple à déployer et à personnaliser.
-- Possibilité de supprimer et ajouter des projets.
+- Possibilité de supprimer, ajouter et modifier des projets.
 
 # Prérequis
 
