@@ -38,7 +38,7 @@ function App() {
                     <Route path="/signup" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-                    <Route path="/edit" element={<ProtectedRoute><Edit /></ProtectedRoute>} />
+                    <Route path="/edit/:id" element={<ProtectedRoute><Edit /></ProtectedRoute>} />
                     <Route path="*" element={<Notfound />} />
                 </Routes>
             </div>

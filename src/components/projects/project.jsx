@@ -4,10 +4,12 @@ import { Link, Navigate } from "react-router-dom";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 import "./styles/project.css";
+import { useNavigate } from "react-router-dom"; // Importer useNavigate
 
 const Project = (props) => {
     const { id, logo, title, description, linkText, link } = props;
     const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
+    const navigate = useNavigate(); // Initialiser useNavigate
 
     const handleDelete = (e) => {
         e.preventDefault();  // Empêche la redirection par défaut
@@ -23,7 +25,7 @@ const Project = (props) => {
 
     const handleEdit = (e) => {
         e.preventDefault();  // Empêche la redirection par défaut
-        return <Navigate to={`/edit/${id}`} />; // Rediriger vers la page d'édition
+        navigate(`/edit/${id}`);
     };
 
     return (

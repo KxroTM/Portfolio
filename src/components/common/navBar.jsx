@@ -31,6 +31,12 @@ const NavBar = ({ active }) => {
                                     <Link to="/login">Connexion</Link>
                                 )}
                             </li>
+                            {isAuthenticated ? (
+                            <li className={active === "admin" ? "nav-item active" : "nav-item"}>
+                                <Link to="/admin">Admin</Link>
+                            </li>                                
+                            ):() => null}
+
                         </ul>
                     </div>
                 </nav>

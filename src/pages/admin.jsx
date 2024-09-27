@@ -61,7 +61,7 @@ const Admin = () => {
             </Helmet>
 
             <div className="page-content">
-                <NavBar active="contact" />
+                <NavBar active="admin" />
                 <div className="content-wrapper">
                     <div className="contact-logo-container">
                         <div className="contact-logo">
@@ -146,7 +146,7 @@ const Admin = () => {
 
                                 <div className="buttonValider">
                                     <button type="submit"> {/* Ajouter type="submit" */}
-                                        <span className="button_top"> Validé </span>
+                                        <span className="button_top"> Valider </span>
                                     </button>
                                 </div>
                             </div>  

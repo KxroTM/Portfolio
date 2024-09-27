@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 
 import "./styles/footer.css";
 
 const Footer = () => {
+	    const { isAuthenticated } = useAuth(); // Utiliser l'état isAuthenticated du contexte
+
 	return (
 		<React.Fragment>
 			<div className="footer">
@@ -22,10 +25,19 @@ const Footer = () => {
 						<li className="footer-nav-link-item">
 							<Link to="/contact">Contact</Link>
 						</li>
-
 						<li className="footer-nav-link-item">
-							<Link to="/login">Connexion</Link>
-						</li>
+                                {isAuthenticated ? (
+                                    <Link to="/logout">Déconnexion</Link>
+                                ) : (
+                                    <Link to="/login">Connexion</Link>
+                                )}
+                            </li>
+                            {isAuthenticated ? (
+						<li className="footer-nav-link-item">
+                                <Link to="/admin">Admin</Link>
+                            </li>                                
+                            ):() => null}
+
 					</ul>
 				</div>
 

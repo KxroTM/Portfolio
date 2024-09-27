@@ -113,3 +113,27 @@ func DeleteProject(id string) {
 	_, err = db.Exec("DELETE FROM projects WHERE id = ?", id)
 	checkErr(err, "Error deleting project:")
 }
+
+func GetProjectById(id string) Project {
+	db, err := sql.Open("sqlite3", "./db/Db.sql")
+	checkErr(err, "Error opening database:")
+	defer db.Close()
+
+	row := db.QueryRow("SELECT * FROM projects WHERE id = ?", id)
+
+	project := Project{}
+	err = row.Scan(&project.ID, &project.Title, &project.Description, &project.Logo, &project.LinkText, &project.LinkUrl)
+	checkErr(err, "Error scanning project:")
+
+	return project
+}
+
+func EditProject(project Project) {
+	db, err := sql.Open("sqlite3", "./db/Db.sql")
+	checkErr(err, "Error opening database:")
+	defer db.Close()
+
+	_, err = db.Exec("UPDATE projects SET title = ?, description = ?, logo = ?, linkUrl = ? WHERE id = ?",
+		project.Title, project.Description, project.Logo, project.LinkUrl, project.ID)
+	checkErr(err, "Error updating project:")
+}

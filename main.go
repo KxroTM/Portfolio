@@ -25,6 +25,12 @@ func main() {
 		c.Next()
 	})
 
+	r.GET("/projet", func(c *gin.Context) {
+		id := c.Query("id")
+		proj := db.GetProjectById(id)
+		c.JSON(http.StatusOK, proj)
+	})
+
 	r.GET("/projects", func(c *gin.Context) {
 		projects := db.GetAllProjects()
 
@@ -66,6 +72,21 @@ func main() {
 		db.DeleteProject(id)
 
 		c.JSON(http.StatusOK, gin.H{"message": "Project deleted!"})
+	})
+
+	r.GET("/edit", func(c *gin.Context) {
+		proj := db.Project{
+			ID:          c.Query("id"),
+			Title:       c.Query("title"),
+			Description: c.Query("description"),
+			Logo:        c.Query("langage"),
+			LinkUrl:     c.Query("link"),
+		}
+
+		db.EditProject(proj)
+
+		c.JSON(http.StatusOK, gin.H{"message": "Project edited!"})
+
 	})
 
 	r.Run(":8080")
