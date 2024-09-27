@@ -1,16 +1,24 @@
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet"; // Assurez-vous que cette ligne est présente
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
-import AllProjects from "../components/projects/allProjects"; // Vérifiez que l'importation est correcte
+import AllProjects from "../components/projects/allProjects";
 import INFO from "../data/user";
 import SEO from "../data/seo";
 import "./styles/projects.css";
+import { GetAllsProjects } from "../data/user";
 
 const Projects = () => {
+    const [projects, setProjects] = useState([]); // Utiliser useState pour stocker les projets récupérés
+
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        // Charger les projets via l'API et mettre à jour l'état
+        GetAllsProjects().then((fetchedProjects) => {
+            setProjects(fetchedProjects); // Mettre à jour l'état avec les projets récupérés
+        });
     }, []);
 
     const currentSEO = SEO.find((item) => item.page === "projects");
@@ -41,7 +49,7 @@ const Projects = () => {
                         </div>
 
                         <div className="projects-list">
-                            <AllProjects />
+                            <AllProjects projects={projects} /> {/* Passer les projets récupérés ici */}
                         </div>
                     </div>
                     <div className="page-footer">

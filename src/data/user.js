@@ -34,10 +34,6 @@ let INFO = {
 export default INFO;
 
 function AddProject(id,title, description, logo, linkText, link) {
-
-	console.log(linkText);
-	console.log(link);
-
 	INFO.projects.push({
 		id : id,
 		title: title,
@@ -49,15 +45,23 @@ function AddProject(id,title, description, logo, linkText, link) {
 }
 
 function GetAllsProjects() {
-	fetch("http://localhost:8080/projects")
-		.then((response) => response.json())
-		.then((data) => {
-			console.log(data);
-			data.forEach((element) => {
-				AddProject(element.id,element.title, element.description, element.logo, element.linkText, element.link);
-			});
-		});
-	console.log(INFO.projects);
+    return fetch("http://localhost:8080/projects")
+        .then((response) => response.json())
+        .then((data) => {
+            const projects = [];
+            data.forEach((element) => {
+                projects.push({
+                    id: element.id,
+                    title: element.title,
+                    description: element.description,
+                    logo: element.logo,
+                    linkText: element.linkText,
+                    link: element.link,
+                });
+            });
+            return projects; // Retourner les projets récupérés
+        });
 }
+
 
 export { GetAllsProjects };

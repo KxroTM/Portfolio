@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom"; // Importer useNavigate
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -8,9 +9,11 @@ import Logo from "../components/common/logo";
 import INFO from "../data/user";
 import SEO from "../data/seo";
 
-import "./styles/admin.css";  
+import "./styles/admin.css";
 
 const Admin = () => {
+    const navigate = useNavigate(); // Initialiser useNavigate
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -28,7 +31,7 @@ const Admin = () => {
         event.preventDefault(); // Empêche le rechargement de la page
 
         // Construire l'URL avec les paramètres de requête
-        const url = `http://localhost:8080/add?title=${encodeURIComponent(title)}&langage=${encodeURIComponent(language)}&description=${encodeURIComponent(summary)}&link=${encodeURIComponent(link)}`;
+        const url = `http://localhost:8080/add?title=${encodeURIComponent(title)}&langage=https://cdn.jsdelivr.net/npm/programming-languages-logos/src/${language}/${language}.png&description=${encodeURIComponent(summary)}&link=${encodeURIComponent(link)}`;
 
         try {
             const response = await fetch(url, {
@@ -39,12 +42,7 @@ const Admin = () => {
                 throw new Error("Erreur lors de l'ajout du projet");
             }
 
-            // Optionnel: Réinitialiser les champs du formulaire après l'envoi
-            setTitle("");
-            setLanguage("javascript");
-            setSummary("");
-            setLink(""); // Réinitialiser le champ lien
-            alert("Projet ajouté avec succès !"); // Message de succès
+            navigate("/projects"); // Utiliser navigate pour rediriger
         } catch (error) {
             console.error("Erreur:", error);
             alert("Échec de l'ajout du projet. Veuillez réessayer."); // Message d'erreur
@@ -72,15 +70,14 @@ const Admin = () => {
                     </div>
 
                     <div className="contact-container">
-                        <div className="title contact-title">
-                            Admin
-                        </div>
+                        <div className="title contact-title">Admin</div>
 
                         <div className="subtitle contact-subtitle">
                             Pour ajouter un projet, veuillez remplir le formulaire ci-dessous
                         </div>
 
-                        <form onSubmit={handleSubmit}> {/* Ajouter un formulaire ici */}
+                        <form onSubmit={handleSubmit}>
+                            {/* Formulaire */}
                             <div className="Titre1">
                                 <div className="input-container">
                                     <input

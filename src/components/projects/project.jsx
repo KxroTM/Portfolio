@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 import "./styles/project.css";
@@ -10,19 +10,20 @@ const Project = (props) => {
     const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
 
     const handleDelete = (e) => {
-        e.preventDefault();  // Empêche la redirection
+        e.preventDefault();  // Empêche la redirection par défaut
         fetch(`http://localhost:8080/delete?id=` + id, {
             method: "GET",
         })
             .then((response) => response.json())
             .then((data) => {
-                alert(data.message);
+                console.log(data);
+                window.location.reload();
             });
     };
 
     const handleEdit = (e) => {
-        e.preventDefault();  // Empêche la redirection
-        alert(`Modification du projet "${title}".`);
+        e.preventDefault();  // Empêche la redirection par défaut
+        return <Navigate to={`/edit/${id}`} />; // Rediriger vers la page d'édition
     };
 
     return (

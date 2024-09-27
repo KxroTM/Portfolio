@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { GetAllsProjects } from "./data/user";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,5 +15,7 @@ root.render(
 		</BrowserRouter>
 	</React.StrictMode>
 );
+
+GetAllsProjects()
 
 reportWebVitals();

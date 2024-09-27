@@ -1,13 +1,12 @@
 import React from "react";
 import Project from "./project"; // Assurez-vous que le chemin est correct
-import INFO from "../../data/user"; // Ajout de l'import INFO
 import "./styles/allProjects.css";
 
-const AllProjects = () => {
+const AllProjects = ({ projects }) => {
     return (
         <div className="all-projects-container">
-            {INFO.projects.map((project, index) => (
-                <div className="all-projects-project" id={index}>
+            {projects.map((project, index) => (
+                <div className="all-projects-project" key={project.id || index}> {/* Utiliser une clé unique */}
                     <Project
                         id={project.id}
                         logo={project.logo}
@@ -23,3 +22,4 @@ const AllProjects = () => {
 };
 
 export default AllProjects;
+
