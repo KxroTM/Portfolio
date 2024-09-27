@@ -14,8 +14,8 @@ type Project struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Logo        string `json:"logo"`
-	LinkText    string `json:"link_text"`
-	LinkUrl     string `json:"link_url"`
+	LinkText    string `json:"linkText"`
+	LinkUrl     string `json:"link"`
 }
 
 func checkErr(err error, msg string) {

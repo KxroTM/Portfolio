@@ -7,7 +7,7 @@ import "./styles/project.css";
 import { Helmet } from "react-helmet"; // Assurez-vous que cette ligne est présente
 
 const Project = (props) => {
-    const { logo, title, description, linkText, link } = props;
+    const { id , logo, title, description, linkText, link } = props;
     const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
 
     const handleDelete = () => {
@@ -22,7 +22,7 @@ const Project = (props) => {
         <React.Fragment>
             <div className="project">
                 <Link to={link}>
-                    <div className="project-container">
+                    <div className="project-container" id={id}>
                         <div className="project-logo">
                             <img src={logo} alt="logo" />
                         </div>
@@ -34,7 +34,7 @@ const Project = (props) => {
                             </div>
                             <div className="project-link-text">{linkText}</div>
                         </div>
-                        {isAuthenticated && ( // Vérifier si l'utilisateur est connecté
+                        {isAuthenticated && (
                             <div className="project-actions">
                                 <button onClick={handleEdit}>
                                     <FontAwesomeIcon icon={faEdit} />

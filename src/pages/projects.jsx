@@ -41,7 +41,7 @@ const Projects = () => {
                         </div>
 
                         <div className="projects-list">
-                            <AllProjects /> {/* Assurez-vous que ce composant est utilisé */}
+                            <AllProjects />
                         </div>
                     </div>
                     <div className="page-footer">

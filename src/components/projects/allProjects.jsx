@@ -7,9 +7,9 @@ const AllProjects = () => {
     return (
         <div className="all-projects-container">
             {INFO.projects.map((project, index) => (
-                <div className="all-projects-project" key={index}>
+                <div className="all-projects-project" id={index}>
                     <Project
-                        key={project.id}
+                        id={project.id}
                         logo={project.logo}
                         title={project.title}
                         description={project.description}
