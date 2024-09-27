@@ -96,3 +96,15 @@ function AddProject(title, description, logo, linkText, link) {
 		link: link,
 	});
 }
+
+function GetAllsProjects() {
+	fetch("http://localhost:8080/projects")
+		.then((response) => response.json())
+		.then((data) => {
+			data.forEach((element) => {
+				AddProject(element.id,element.title, element.description, element.logo, element.linkText, element.link);
+			});
+		});
+}
+
+GetAllsProjects();
