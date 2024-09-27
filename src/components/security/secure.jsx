@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext"; // Utilise le hook useAuth
 
 const ProtectedRoute = ({ children }) => {
     const { isAuthenticated } = useAuth(); // Utilise le hook pour obtenir l'état d'authentification
+    console.log( isAuthenticated);
 
     if (!isAuthenticated) {
         return <Navigate to="/login" />;
