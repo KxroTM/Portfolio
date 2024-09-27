@@ -7,6 +7,7 @@
 - Présentation des projets avec des descriptions, des images et des liens.
 - Interface web réactive et moderne.
 - Simple à déployer et à personnaliser.
+- Possibilité de supprimer et ajouter des projets.
 
 # Prérequis
 
@@ -18,14 +19,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 # Installation
 
 - Clonez le dépôt sur votre machine locale :
-git clone https://github.com/votre-utilisateur/portfolio-go.git
-
+git clone https://github.com/KxroTM/Portfolio.git
 - Accédez au répertoire du projet :
-cd portfolio-go
-
-- Installez les dépendances (si nécessaire) et compilez le projet :
-go mod tidy
-go build
+cd Portfolio
 
 # Utilisation
 
