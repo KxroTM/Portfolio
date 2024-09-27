@@ -63,7 +63,6 @@ func main() {
 
 	r.GET("/delete", func(c *gin.Context) {
 		id := c.Query("id")
-
 		db.DeleteProject(id)
 
 		c.JSON(http.StatusOK, gin.H{"message": "Project deleted!"})

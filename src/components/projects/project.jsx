@@ -4,24 +4,31 @@ import { Link } from "react-router-dom";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 import "./styles/project.css";
-import { Helmet } from "react-helmet"; // Assurez-vous que cette ligne est présente
 
 const Project = (props) => {
-    const { id , logo, title, description, linkText, link } = props;
+    const { id, logo, title, description, linkText, link } = props;
     const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
 
-    const handleDelete = () => {
-        alert(`Le projet "${title}" a été supprimé.`);
+    const handleDelete = (e) => {
+        e.preventDefault();  // Empêche la redirection
+        fetch(`http://localhost:8080/delete?id=` + id, {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data.message);
+            });
     };
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.preventDefault();  // Empêche la redirection
         alert(`Modification du projet "${title}".`);
     };
 
     return (
         <React.Fragment>
             <div className="project">
-                <Link to={link}>
+                <Link to={link} onClick={(e) => e.stopPropagation()}>
                     <div className="project-container" id={id}>
                         <div className="project-logo">
                             <img src={logo} alt="logo" />
