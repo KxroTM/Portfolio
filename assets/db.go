@@ -104,3 +104,12 @@ func AddProject(project Project) {
 		id, project.Title, project.Description, project.Logo, "Voir le Projet", project.LinkUrl)
 	checkErr(err, "Error inserting project:")
 }
+
+func DeleteProject(id string) {
+	db, err := sql.Open("sqlite3", "./db/Db.sql")
+	checkErr(err, "Error opening database:")
+	defer db.Close()
+
+	_, err = db.Exec("DELETE FROM projects WHERE id = ?", id)
+	checkErr(err, "Error deleting project:")
+}

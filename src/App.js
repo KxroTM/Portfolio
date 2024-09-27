@@ -13,6 +13,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Logout from "./pages/logout";
 import Edit from "./pages/edit";
+import { GetAllsProjects } from "./data/user";
 
 import ProtectedRoute from "./components/security/secure";
 import { TRACKING_ID } from "./data/tracking";
@@ -46,4 +47,5 @@ function App() {
     );
 }
 
+GetAllsProjects();
 export default App;

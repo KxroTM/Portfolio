@@ -61,5 +61,13 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "Project added!"})
 	})
 
+	r.GET("/delete", func(c *gin.Context) {
+		id := c.Query("id")
+
+		db.DeleteProject(id)
+
+		c.JSON(http.StatusOK, gin.H{"message": "Project deleted!"})
+	})
+
 	r.Run(":8080")
 }

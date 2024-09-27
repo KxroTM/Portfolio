@@ -82,12 +82,14 @@ let INFO = {
 			linkText: "View Project",
 			link: "https://github.com",
 		},
+
 	],
 };
 
 export default INFO;
 
 function AddProject(title, description, logo, linkText, link) {
+
 	INFO.projects.push({
 		title: title,
 		description: description,
@@ -109,4 +111,4 @@ function GetAllsProjects() {
 	console.log(INFO.projects);
 }
 
-GetAllsProjects();
+export { GetAllsProjects };
