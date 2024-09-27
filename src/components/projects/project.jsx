@@ -1,20 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { useAuth } from "../../context/AuthContext"; // Importe le contexte ici
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
 import "./styles/project.css";
 
 const Project = (props) => {
-    const { logo, title, description, linkText } = props;
-    const { isAuthenticated } = useAuth(); // Utilise le contexte d'authentification
+    const { logo, title, description, linkText, link } = props;
+    const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
 
-    // Fonction pour supprimer le projet
     const handleDelete = () => {
         alert(`Le projet "${title}" a été supprimé.`);
     };
 
-    // Fonction pour modifier le projet
     const handleEdit = () => {
         alert(`Modification du projet "${title}".`);
     };
@@ -22,29 +20,31 @@ const Project = (props) => {
     return (
         <React.Fragment>
             <div className="project">
-                <div className="project-container">
-                    <div className="project-logo">
-                        <img src={logo} alt="logo" />
-                    </div>
-                    <div className="project-title">{title}</div>
-                    <div className="project-description">{description}</div>
-                    <div className="project-link">
-                        <div className="project-link-icon">
-                            <FontAwesomeIcon icon={faLink} />
+                <Link to={link}>
+                    <div className="project-container">
+                        <div className="project-logo">
+                            <img src={logo} alt="logo" />
                         </div>
-                        <div className="project-link-text">{linkText}</div>
-                    </div>
-                    {isAuthenticated && ( // Remplace IsConnected par isAuthenticated
-                        <div className="project-actions">
-                            <button onClick={handleEdit}>
-                                <FontAwesomeIcon icon={faEdit} />
-                            </button>
-                            <button onClick={handleDelete}>
-                                <FontAwesomeIcon icon={faTrash} />
-                            </button>
+                        <div className="project-title">{title}</div>
+                        <div className="project-description">{description}</div>
+                        <div className="project-link">
+                            <div className="project-link-icon">
+                                <FontAwesomeIcon icon={faLink} />
+                            </div>
+                            <div className="project-link-text">{linkText}</div>
                         </div>
-                    )}
-                </div>
+                        {isAuthenticated && ( // Vérifier si l'utilisateur est connecté
+                            <div className="project-actions">
+                                <button onClick={handleEdit}>
+                                    <FontAwesomeIcon icon={faEdit} />
+                                </button>
+                                <button onClick={handleDelete}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </Link>
             </div>
         </React.Fragment>
     );
