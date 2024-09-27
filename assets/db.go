@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/gofrs/uuid"
+
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -96,7 +98,9 @@ func AddProject(project Project) {
 	checkErr(err, "Error opening database:")
 	defer db.Close()
 
+	id := uuid.Must(uuid.NewV4()).String()
+
 	_, err = db.Exec("INSERT INTO projects (id, title, description, logo, linkText, linkUrl) VALUES (?, ?, ?, ?, ?, ?)",
-		project.ID, project.Title, project.Description, project.Logo, "Voir le Projet", project.LinkUrl)
+		id, project.Title, project.Description, project.Logo, "Voir le Projet", project.LinkUrl)
 	checkErr(err, "Error inserting project:")
 }
