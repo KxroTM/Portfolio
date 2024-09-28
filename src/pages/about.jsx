@@ -5,6 +5,7 @@ import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
 import Socials from "../components/about/socials";
+import Hardskill from "../components/about/hardskill";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
@@ -69,6 +70,11 @@ const About = () => {
 						<div className="about-socials-mobile">
 							<Socials />
 						</div>
+
+						<div className="Hardskill">
+							<Hardskill />
+						</div>
+
 					</div>
 					<div className="page-footer">
 						<Footer />
