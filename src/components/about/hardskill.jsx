@@ -32,7 +32,6 @@ const Hardskill = () => {
                                     <li>Word</li>
                                 </ul>
                             </div>
-                            <div className="Hardskill-duration">2017-2024 - Present</div>
                         </div>
 
                         <div className="Hardskill">
@@ -52,7 +51,6 @@ const Hardskill = () => {
                                     <li>Go</li>
                                 </ul>
                             </div>
-                            <div className="Hardskill-duration">2019-2024 - Present</div>
                         </div>
 
                         <div className="Hardskill">
@@ -70,7 +68,6 @@ const Hardskill = () => {
                                     <li>Chinois</li>
                                 </ul>
                             </div>
-                            <div className="Hardskill-duration">2019-2024 - Present</div>
                         </div>
                     </div>
                 }
