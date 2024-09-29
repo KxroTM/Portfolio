@@ -30,6 +30,6 @@ docker build -t portfolio .
 docker run -p 8080:8080 -p 3000:3000 portfolio
 
 - Ouvrez votre navigateur et accédez à l'adresse suivante :
-http://localhost:8080
+http://localhost:3000
 
 ### Explorez les projets, modifiez le contenu du portfolio en éditant les fichiers HTML/CSS ou en ajoutant des entrées dans le code Go.
