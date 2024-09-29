@@ -59,7 +59,7 @@ function GetAllsProjects() {
                     link: element.link,
                 });
             });
-            return projects; // Retourner les projets récupérés
+            return projects;
         });
 }
 

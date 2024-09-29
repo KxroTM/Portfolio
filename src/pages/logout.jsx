@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useAuth } from "../context/AuthContext"; // Importer le contexte
+import { useAuth } from "../context/AuthContext"; 
 
 const Logout = () => {
-    const { logout } = useAuth(); // Utiliser la fonction logout du contexte
+    const { logout } = useAuth(); 
 
     useEffect(() => {
-        logout(); // Déconnecter l'utilisateur
+        logout();
         window.location.href = "/login";
     }, [logout]);
 

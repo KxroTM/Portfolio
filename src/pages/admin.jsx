@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom"; // Importer useNavigate
+import { useNavigate } from "react-router-dom";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -12,7 +12,7 @@ import SEO from "../data/seo";
 import "./styles/admin.css";
 
 const Admin = () => {
-    const navigate = useNavigate(); // Initialiser useNavigate
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -20,32 +20,29 @@ const Admin = () => {
 
     const currentSEO = SEO.find((item) => item.page === "admin") || {};
 
-    // État pour gérer les valeurs du formulaire
     const [title, setTitle] = useState("");
-    const [language, setLanguage] = useState("javascript"); // Valeur par défaut
+    const [language, setLanguage] = useState("javascript"); 
     const [summary, setSummary] = useState("");
-    const [link, setLink] = useState(""); // Nouvel état pour le lien
+    const [link, setLink] = useState("");
 
-    // Fonction pour gérer l'envoi du formulaire
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Empêche le rechargement de la page
+        event.preventDefault(); 
 
-        // Construire l'URL avec les paramètres de requête
         const url = `http://localhost:8080/add?title=${encodeURIComponent(title)}&langage=https://cdn.jsdelivr.net/npm/programming-languages-logos/src/${language}/${language}.png&description=${encodeURIComponent(summary)}&link=${encodeURIComponent(link)}`;
 
         try {
             const response = await fetch(url, {
-                method: "GET", // Méthode GET
+                method: "POST",
             });
 
             if (!response.ok) {
                 throw new Error("Erreur lors de l'ajout du projet");
             }
 
-            navigate("/projects"); // Utiliser navigate pour rediriger
+            navigate("/projects"); 
         } catch (error) {
             console.error("Erreur:", error);
-            alert("Échec de l'ajout du projet. Veuillez réessayer."); // Message d'erreur
+            alert("Échec de l'ajout du projet. Veuillez réessayer."); 
         }
     };
 
@@ -77,14 +74,13 @@ const Admin = () => {
                         </div>
 
                         <form onSubmit={handleSubmit}>
-                            {/* Formulaire */}
                             <div className="Titre1">
                                 <div className="input-container">
                                     <input
                                         type="text"
                                         id="input"
                                         value={title}
-                                        onChange={(e) => setTitle(e.target.value)} // Mettre à jour l'état
+                                        onChange={(e) => setTitle(e.target.value)} 
                                         required
                                     />
                                     <label htmlFor="input" className="label">Titre : </label>
@@ -98,7 +94,7 @@ const Admin = () => {
                                 <select 
                                     name="listeDeroulante" 
                                     value={language} 
-                                    onChange={(e) => setLanguage(e.target.value)} // Mettre à jour l'état
+                                    onChange={(e) => setLanguage(e.target.value)} 
                                 >
                                     <optgroup label="Sélectionner le langage de programmation">
                                         <option value="c">C</option>
@@ -126,7 +122,7 @@ const Admin = () => {
                                     <textarea
                                         placeholder="Taper ici..."
                                         value={summary}
-                                        onChange={(e) => setSummary(e.target.value)} // Mettre à jour l'état
+                                        onChange={(e) => setSummary(e.target.value)} 
                                         required
                                     />
                                     <span>Résumé</span>
@@ -137,7 +133,7 @@ const Admin = () => {
                                         type="text"
                                         id="link"
                                         value={link}
-                                        onChange={(e) => setLink(e.target.value)} // Mettre à jour l'état du lien
+                                        onChange={(e) => setLink(e.target.value)}
                                         required
                                     />
                                     <label htmlFor="link" className="label">Lien : </label>
@@ -145,7 +141,7 @@ const Admin = () => {
                                 </div>
 
                                 <div className="buttonValider">
-                                    <button type="submit"> {/* Ajouter type="submit" */}
+                                    <button type="submit"> 
                                         <span className="button_top"> Valider </span>
                                     </button>
                                 </div>

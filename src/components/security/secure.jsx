@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; // Utilise le hook useAuth
+import { useAuth } from "../../context/AuthContext"; 
 
 const ProtectedRoute = ({ children }) => {
-    const { isAuthenticated } = useAuth(); // Utilise le hook pour obtenir l'état d'authentification
+    const { isAuthenticated } = useAuth(); 
     console.log( isAuthenticated);
 
     if (!isAuthenticated) {

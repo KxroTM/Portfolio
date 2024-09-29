@@ -2,19 +2,19 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, Navigate } from "react-router-dom";
 import { faLink, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
+import { useAuth } from "../../context/AuthContext";
 import "./styles/project.css";
-import { useNavigate } from "react-router-dom"; // Importer useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 const Project = (props) => {
     const { id, logo, title, description, linkText, link } = props;
-    const { isAuthenticated } = useAuth(); // Accéder à isAuthenticated depuis le contexte
-    const navigate = useNavigate(); // Initialiser useNavigate
+    const { isAuthenticated } = useAuth();
+    const navigate = useNavigate(); 
 
     const handleDelete = (e) => {
-        e.preventDefault();  // Empêche la redirection par défaut
+        e.preventDefault(); 
         fetch(`http://localhost:8080/delete?id=` + id, {
-            method: "GET",
+            method: "DELETE",
         })
             .then((response) => response.json())
             .then((data) => {
@@ -24,7 +24,7 @@ const Project = (props) => {
     };
 
     const handleEdit = (e) => {
-        e.preventDefault();  // Empêche la redirection par défaut
+        e.preventDefault(); 
         navigate(`/edit/${id}`);
     };
 

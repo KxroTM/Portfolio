@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; // Importer le contexte
+import { useAuth } from "../../context/AuthContext"; 
 import "./styles/navBar.css";
 
 const NavBar = ({ active }) => {
-    const { isAuthenticated } = useAuth(); // Utiliser l'état isAuthenticated du contexte
+    const { isAuthenticated } = useAuth();
 
     return (
         <React.Fragment>

@@ -10,14 +10,13 @@ import "./styles/projects.css";
 import { GetAllsProjects } from "../data/user";
 
 const Projects = () => {
-    const [projects, setProjects] = useState([]); // Utiliser useState pour stocker les projets récupérés
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        // Charger les projets via l'API et mettre à jour l'état
         GetAllsProjects().then((fetchedProjects) => {
-            setProjects(fetchedProjects); // Mettre à jour l'état avec les projets récupérés
+            setProjects(fetchedProjects); 
         });
     }, []);
 
@@ -49,7 +48,7 @@ const Projects = () => {
                         </div>
 
                         <div className="projects-list">
-                            <AllProjects projects={projects} /> {/* Passer les projets récupérés ici */}
+                            <AllProjects projects={projects} />
                         </div>
                     </div>
                     <div className="page-footer">

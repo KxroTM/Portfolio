@@ -26,12 +26,10 @@ func checkErr(err error, msg string) {
 }
 
 func UserTableCreate() {
-	// co a la base de données
 	db, err := sql.Open("sqlite3", "./db/Db.sql")
 	checkErr(err, "Error opening database:")
 	defer db.Close()
 
-	// Crée la table users
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS users (
 		username TEXT PRIMARY KEY,
 		password TEXT)`)
@@ -39,12 +37,10 @@ func UserTableCreate() {
 }
 
 func ProjectTableCreate() {
-	// co a la base de données
 	db, err := sql.Open("sqlite3", "./db/Db.sql")
 	checkErr(err, "Error opening database:")
 	defer db.Close()
 
-	// Crée la table projects
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS projects (
 		id TEXT PRIMARY KEY,
 		title TEXT,

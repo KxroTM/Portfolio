@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; // Importer le contexte d'authentification
+import { useAuth } from "../../context/AuthContext";
 
 import "./styles/footer.css";
 
 const Footer = () => {
-	    const { isAuthenticated } = useAuth(); // Utiliser l'état isAuthenticated du contexte
+	    const { isAuthenticated } = useAuth();
 
 	return (
 		<React.Fragment>

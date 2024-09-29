@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom"; // Importer useNavigate pour redirection
-import { useAuth } from "../context/AuthContext"; // Importer le contexte
+import { useNavigate } from "react-router-dom"; 
+import { useAuth } from "../context/AuthContext"; 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
@@ -10,16 +10,15 @@ import SEO from "../data/seo";
 import "./styles/login.css";
 
 const Login = () => {
-    const { login, isAuthenticated } = useAuth(); // Utiliser la fonction login et l'état isAuthenticated du contexte
-    const navigate = useNavigate(); // Hook pour la redirection
+    const { login, isAuthenticated } = useAuth(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        // Si l'utilisateur est déjà connecté, redirection vers la page d'accueil
         if (isAuthenticated) {
             navigate("/");
         }
-    }, [isAuthenticated, navigate]); // Ajout de navigate et isAuthenticated comme dépendances
+    }, [isAuthenticated, navigate]); 
 
     const currentSEO = SEO.find((item) => item.page === "login");
 
@@ -37,8 +36,8 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Login successful:", data);
-                login(); // Appeler la fonction login du contexte
-                navigate("/admin"); // Rediriger vers la page d'accueil après connexion
+                login();
+                navigate("/admin"); 
             } else {
                 console.error("Login failed:", response.status);
             }

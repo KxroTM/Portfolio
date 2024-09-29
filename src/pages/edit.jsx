@@ -12,29 +12,26 @@ import SEO from "../data/seo";
 import "./styles/admin.css";
 
 const Edit = () => {
-    const { id } = useParams(); // Récupérer l'id du projet à partir des paramètres de l'URL
-    const navigate = useNavigate(); // Initialiser useNavigate
+    const { id } = useParams(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetchProjectData(); // Appeler la fonction pour récupérer les données du projet
+        fetchProjectData(); 
     }, []);
 
     const currentSEO = SEO.find((item) => item.page === "admin") || {};
 
-    // État pour gérer les valeurs du formulaire
     const [title, setTitle] = useState("");
-    const [language, setLanguage] = useState("javascript"); // Valeur par défaut
+    const [language, setLanguage] = useState("javascript");
     const [summary, setSummary] = useState("");
-    const [link, setLink] = useState(""); // Nouvel état pour le lien
+    const [link, setLink] = useState("");
 
-    // Fonction pour récupérer les données du projet via l'ID
     const fetchProjectData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/projet?id=${id}`);
             const projectData = await response.json();
 
-            // Pré-remplir les champs avec les données du projet récupéré
             setTitle(projectData.title);
 
             if (projectData.langage) {
@@ -49,23 +46,21 @@ const Edit = () => {
         }
     };
 
-    // Fonction pour gérer l'envoi du formulaire
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Empêche le rechargement de la page
+        event.preventDefault(); 
 
-        // Construire l'URL avec les paramètres de requête pour mettre à jour le projet
         const url = `http://localhost:8080/edit?id=${id}&title=${encodeURIComponent(title)}&langage=https://cdn.jsdelivr.net/npm/programming-languages-logos/src/${language}/${language}.png&description=${encodeURIComponent(summary)}&link=${encodeURIComponent(link)}`;
 
         try {
             const response = await fetch(url, {
-                method: "GET",
+                method: "PUT",
             });
 
             if (!response.ok) {
                 throw new Error("Erreur lors de la mise à jour du projet");
             }
 
-            navigate("/projects"); // Utiliser navigate pour rediriger
+            navigate("/projects"); 
         } catch (error) {
             console.error("Erreur:", error);
             alert("Échec de la mise à jour du projet. Veuillez réessayer.");
@@ -99,14 +94,13 @@ const Edit = () => {
                         </div>
 
                         <form onSubmit={handleSubmit}>
-                            {/* Formulaire */}
                             <div className="Titre1">
                                 <div className="input-container">
                                     <input
                                         type="text"
                                         id="input"
                                         value={title}
-                                        onChange={(e) => setTitle(e.target.value)} // Mettre à jour l'état
+                                        onChange={(e) => setTitle(e.target.value)} 
                                         required
                                     />
                                     <label htmlFor="input" className="label">Titre : </label>
@@ -120,7 +114,7 @@ const Edit = () => {
                                 <select 
                                     name="listeDeroulante" 
                                     value={language} 
-                                    onChange={(e) => setLanguage(e.target.value)} // Mettre à jour l'état
+                                    onChange={(e) => setLanguage(e.target.value)} 
                                 >
                                     <optgroup label="Sélectionner le langage de programmation">
                                         <option value="c">C</option>
@@ -148,7 +142,7 @@ const Edit = () => {
                                     <textarea
                                         placeholder="Taper ici..."
                                         value={summary}
-                                        onChange={(e) => setSummary(e.target.value)} // Mettre à jour l'état
+                                        onChange={(e) => setSummary(e.target.value)} 
                                         required
                                     />
                                     <span>Résumé</span>
@@ -159,7 +153,7 @@ const Edit = () => {
                                         type="text"
                                         id="link"
                                         value={link}
-                                        onChange={(e) => setLink(e.target.value)} // Mettre à jour l'état du lien
+                                        onChange={(e) => setLink(e.target.value)}
                                         required
                                     />
                                     <label htmlFor="link" className="label">Lien : </label>
@@ -167,7 +161,7 @@ const Edit = () => {
                                 </div>
 
                                 <div className="buttonValider">
-                                    <button type="submit"> {/* Ajouter type="submit" */}
+                                    <button type="submit">
                                         <span className="button_top"> Valider </span>
                                     </button>
                                 </div>

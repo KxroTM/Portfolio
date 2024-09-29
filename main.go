@@ -15,10 +15,10 @@ func main() {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Authorization")
-		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS")
 
 		if c.Request.Method == "OPTIONS" {
-			c.AbortWithStatus(204)
+			c.AbortWithStatus(200)
 			return
 		}
 
@@ -54,7 +54,7 @@ func main() {
 		}
 	})
 
-	r.GET("/add", func(c *gin.Context) {
+	r.POST("/add", func(c *gin.Context) {
 		proj := db.Project{
 			Title:       c.Query("title"),
 			Description: c.Query("description"),
@@ -67,14 +67,14 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "Project added!"})
 	})
 
-	r.GET("/delete", func(c *gin.Context) {
+	r.DELETE("/delete", func(c *gin.Context) {
 		id := c.Query("id")
 		db.DeleteProject(id)
 
 		c.JSON(http.StatusOK, gin.H{"message": "Project deleted!"})
 	})
 
-	r.GET("/edit", func(c *gin.Context) {
+	r.PUT("/edit", func(c *gin.Context) {
 		proj := db.Project{
 			ID:          c.Query("id"),
 			Title:       c.Query("title"),

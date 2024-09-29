@@ -9,7 +9,7 @@ import Socials from "../components/about/socials";
 import INFO from "../data/user";
 import SEO from "../data/seo";
 
-import "./styles/login.css";  // =============================================>
+import "./styles/login.css";  
 
 const Register = () => {
 	useEffect(() => {
